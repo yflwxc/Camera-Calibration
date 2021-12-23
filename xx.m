@@ -1,0 +1,20 @@
+function C=xx(c)
+[m n]=size(c);
+for i=1:n
+    w1(i)=[c(1,i)^2]; %x^2
+    w2(i)=[c(2,i)^2]; %y^2
+    w3(i)=[2*c(1,i)*c(2,i)]; %2*x*y
+    w4(i)=[2*c(1,i)]; % 2 * x
+    w5(i)=[2*c(2,i)]; % 2 % y
+end
+w6=ones(1,n);
+w1=w1';
+w2=w2';
+w3=w3';
+w4=w4';
+w5=w5';
+w6=w6';
+w=[w1 w2 w3 w4 w5 w6];
+[S V D]=svd(w);
+D=D(:,6)/D(6,6);
+C=[D(1) D(3) D(4);D(3) D(2) D(5);D(4) D(5) D(6)];
